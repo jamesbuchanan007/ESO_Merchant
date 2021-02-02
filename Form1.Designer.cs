@@ -46,6 +46,8 @@ namespace ESO_Merchant
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.btnAll = new System.Windows.Forms.Button();
 			this.btnNotListed = new System.Windows.Forms.Button();
+			this.btnPasteName = new System.Windows.Forms.Button();
+			this.btnPastePrice = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxItemCost)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxItemPrice)).BeginInit();
 			this.SuspendLayout();
@@ -63,7 +65,7 @@ namespace ESO_Merchant
 			this.picBoxItemCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.picBoxItemCost.Location = new System.Drawing.Point(325, 182);
 			this.picBoxItemCost.Name = "picBoxItemCost";
-			this.picBoxItemCost.Size = new System.Drawing.Size(342, 50);
+			this.picBoxItemCost.Size = new System.Drawing.Size(258, 50);
 			this.picBoxItemCost.TabIndex = 2;
 			this.picBoxItemCost.TabStop = false;
 			// 
@@ -92,7 +94,7 @@ namespace ESO_Merchant
 			this.picBoxItemPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.picBoxItemPrice.Location = new System.Drawing.Point(325, 251);
 			this.picBoxItemPrice.Name = "picBoxItemPrice";
-			this.picBoxItemPrice.Size = new System.Drawing.Size(342, 50);
+			this.picBoxItemPrice.Size = new System.Drawing.Size(258, 57);
 			this.picBoxItemPrice.TabIndex = 4;
 			this.picBoxItemPrice.TabStop = false;
 			// 
@@ -136,7 +138,7 @@ namespace ESO_Merchant
 			// 
 			this.ckBoxIsListed.AutoSize = true;
 			this.ckBoxIsListed.ForeColor = System.Drawing.Color.White;
-			this.ckBoxIsListed.Location = new System.Drawing.Point(558, 146);
+			this.ckBoxIsListed.Location = new System.Drawing.Point(325, 96);
 			this.ckBoxIsListed.Name = "ckBoxIsListed";
 			this.ckBoxIsListed.Size = new System.Drawing.Size(109, 17);
 			this.ckBoxIsListed.TabIndex = 12;
@@ -156,6 +158,7 @@ namespace ESO_Merchant
 			this.btnAdd.TabIndex = 13;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = false;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// textBox1
 			// 
@@ -163,7 +166,7 @@ namespace ESO_Merchant
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(227, 20);
 			this.textBox1.TabIndex = 14;
-			this.textBox1.Text = "Enter Items to Search";
+			this.textBox1.Text = "Enter Search Item";
 			// 
 			// btnSearch
 			// 
@@ -212,12 +215,42 @@ namespace ESO_Merchant
 			this.btnNotListed.Text = "Not Listed";
 			this.btnNotListed.UseVisualStyleBackColor = false;
 			// 
+			// btnPasteName
+			// 
+			this.btnPasteName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.btnPasteName.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.btnPasteName.FlatAppearance.BorderSize = 0;
+			this.btnPasteName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPasteName.ForeColor = System.Drawing.Color.Black;
+			this.btnPasteName.Location = new System.Drawing.Point(592, 195);
+			this.btnPasteName.Name = "btnPasteName";
+			this.btnPasteName.Size = new System.Drawing.Size(75, 23);
+			this.btnPasteName.TabIndex = 20;
+			this.btnPasteName.Text = "Paste";
+			this.btnPasteName.UseVisualStyleBackColor = false;
+			// 
+			// btnPastePrice
+			// 
+			this.btnPastePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.btnPastePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.btnPastePrice.FlatAppearance.BorderSize = 0;
+			this.btnPastePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPastePrice.ForeColor = System.Drawing.Color.Black;
+			this.btnPastePrice.Location = new System.Drawing.Point(592, 267);
+			this.btnPastePrice.Name = "btnPastePrice";
+			this.btnPastePrice.Size = new System.Drawing.Size(75, 23);
+			this.btnPastePrice.TabIndex = 21;
+			this.btnPastePrice.Text = "Paste";
+			this.btnPastePrice.UseVisualStyleBackColor = false;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.ClientSize = new System.Drawing.Size(677, 328);
+			this.Controls.Add(this.btnPastePrice);
+			this.Controls.Add(this.btnPasteName);
 			this.Controls.Add(this.btnNotListed);
 			this.Controls.Add(this.btnAll);
 			this.Controls.Add(this.comboBox1);
@@ -263,6 +296,8 @@ namespace ESO_Merchant
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Button btnAll;
 		private System.Windows.Forms.Button btnNotListed;
+		private System.Windows.Forms.Button btnPasteName;
+		private System.Windows.Forms.Button btnPastePrice;
 	}
 }
 
