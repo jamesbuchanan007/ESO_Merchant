@@ -21,10 +21,9 @@ namespace ESO_Merchant
         private decimal _Price { get; }
         private string _ImageName1 { get; }
         private string _ImageName2 { get; }
-        private string _DataString { get; }
         private int _isListed { get; }
 
-        private Item(int isListed, int itemID, string name, decimal cost, decimal price, string imageName1, string imageName2, string dataString)
+        private Item(int isListed, int itemID, string name, decimal cost, decimal price, string imageName1, string imageName2)
         {
             _isListed = isListed;
             _ItemID = itemID;
@@ -33,7 +32,6 @@ namespace ESO_Merchant
             _Price = price;
             _ImageName1 = imageName1;
             _ImageName2 = imageName2;
-            _DataString = dataString;
         }
         public int GetID()
         {
@@ -113,12 +111,12 @@ namespace ESO_Merchant
                     checkedCost + '|' +
                     checkedPrice + '|' +
                     imageName1 + '|' +
-                    imageName2 + "\r\n";
+                    imageName2;
 
                 // SAVE DATA
                 File.AppendAllText(@"D:\ESO Merchant\Data.txt", dataString + Environment.NewLine);
 
-                _item = new Item(isListed, itemId, checkedName, checkedCost, checkedPrice, imageName1, imageName2, dataString);
+                _item = new Item(isListed, itemId, checkedName, checkedCost, checkedPrice, imageName1, imageName2);
             }
 
             public Item Build()
@@ -129,6 +127,59 @@ namespace ESO_Merchant
                 return newItem;
             }
         }
+        #endregion
+
+        #region Retrieve Item
+        public class RetrieveItems
+        {
+            private Item _item;
+            private List<Item> _itemsList;
+
+            public RetrieveItems()
+            {
+                var data = File.ReadAllLines(@"D:\ESO Merchant\Data.txt");
+                var items = data.ToList();
+
+                foreach (var item in items)
+                {
+                    var splitStrings = item.Split('|');
+                    var cil = int.TryParse(splitStrings[0], out var checkedIsListed);
+                    if (!cil) throw new Exception("Issue Loading IsListed");
+
+                    var cii = int.TryParse(splitStrings[1], out var checkedItemID);
+                    if (!cii) throw new Exception("Issue Loading ItemID");
+
+                    if (string.IsNullOrEmpty(splitStrings[2])) throw new Exception("Issue Loading Name");
+                    var name = splitStrings[2];
+
+                    var cc = decimal.TryParse(splitStrings[3], out var checkedCost);
+                    if (!cc) throw new Exception("Issue Loading Cost");
+
+                    var cp = decimal.TryParse(splitStrings[4], out var checkedPrice);
+                    if (!cp) throw new Exception("Issue Loading Price");
+
+                    if (string.IsNullOrEmpty(splitStrings[5])) throw new Exception("Issue Loading Image Name 1");
+                    var imageName1 = splitStrings[5];
+
+                    if (string.IsNullOrEmpty(splitStrings[6])) throw new Exception("Issue Loading Image Name 2");
+                    var imageName2 = splitStrings[6];
+
+                    _item = new Item(checkedIsListed, checkedItemID, name, checkedCost, checkedPrice, imageName1, imageName2);
+                    _itemsList.Add(_item);
+                }
+
+                // Destroy Item
+                _item = null;
+            }
+
+            public List<Item> GetList()
+            {
+                var itemList = _itemsList;
+                _itemsList = null;
+                return itemList;
+            }
+        }
+
         #endregion
 
 
